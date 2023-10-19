@@ -13,19 +13,19 @@ function Modal({data , setModal , modal , mode}) {
           <div class="sm:flex sm:items-start">
             <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
               <div class="mt-2">
-                <img src={data.urls.full}></img>
+                <img src={data.urls.full} alt=''></img>
               </div>
             </div>
             <div className='flex flex-col justify-center items-center'>
             <div className=' p-5 flex text-black'>
-                <img src={data.user.profile_image.small} className='rounded-full m-4 '></img>
+                <img src={data.user.profile_image.small} className='rounded-full m-4 ' alt=''></img>
                 <div>
                 <h1>{data.user.name}</h1>
                 <h1>@{data.user.username}</h1>
                 </div>
             </div>
             <div className='flex'>
-                <img  src={!mode ? require('./Assets/Images/like.png') : require('./Assets/Images/like-dark.png')} className='like'></img><span>{data.likes}</span>
+                <img  src={!mode ? require('./Assets/Images/like.png') : require('./Assets/Images/like-dark.png')} className='like' alt=''></img><span>{data.likes}</span>
             </div>
             {data.user.portfolio_url ? <a href={`${data.user.portfolio_url}`} className='bg-slate-800 px-3 py-2 my-2 rounded-xl text-white '>Portfolio</a> : <h1 className='bg-slate-800 px-3 py-2  rounded-xl text-white w-fit '>No Portfolio</h1> }
             <a href={data.links.download} className='bg-slate-800 px-3 py-2  rounded-xl text-white '>Download</a>

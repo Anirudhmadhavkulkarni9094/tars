@@ -27,14 +27,14 @@ function ImageCard({ data  , mode}) {
         />
       <div className="m-1 flex justify-between items-center p-10">
         <div className='flex '>
-          <img src={data.user.profile_image.small} className='rounded-full m-2'></img>
+          <img src={data.user.profile_image.small} className='rounded-full m-2' alt=""></img>
           <div className='text-sm'>
             <h1 className="text-lg font-semibold lg:text-md md:text-md break-words sm:text-sm">{data.user.name}</h1>
             <p className="text-gray-500 lg:text-lg md:text-md sm:text-sm break-words">@{data.user.username}</p>
           </div>
         </div>
         <div className='flex items-center w-5 gap-5'>
-          <img src={!mode ? require('./Assets/Images/like.png') : require('./Assets/Images/like-dark.png')} className='like m-1 lg:text-lg md:text-md sm:text-sm'></img>
+          <img src={!mode ? require('./Assets/Images/like.png') : require('./Assets/Images/like-dark.png')} className='like m-1 lg:text-lg md:text-md sm:text-sm' alt=''></img>
           <h1>{data.likes}</h1>
         </div>
       </div>
