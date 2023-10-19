@@ -9,7 +9,7 @@ function NavBar({ handleQuery, query, handleMode, mode }) {
           <div className="flex gap-10 items-center hidden md:flex">
             {/* Search bar for medium and larger screens */}
             <div className='flex bg-white pr-5 pl-2 py-2 rounded-xl'>
-              <img src={require('./Assets/Images/search.png')} className='border-none w-6 mx-2'></img>
+              <img src={require('./Assets/Images/search.png')} className='border-none w-6 mx-2' alt=''></img>
               <input placeholder='search image here' style={{ border: 'none' , outline : 'none' }} onChange={handleQuery} value={query} />
             </div>
             <h1>Explore</h1>
@@ -19,7 +19,7 @@ function NavBar({ handleQuery, query, handleMode, mode }) {
           {/* Search bar for small screens */}
           <div className='md:hidden lg:hidden'>
           <div className='flex bg-white pr-5 pl-2 py-2 rounded-xl'>
-              <img src={require('./Assets/Images/search.png')} className='border-none w-6 mx-2'></img>
+              <img src={require('./Assets/Images/search.png')} className='border-none w-6 mx-2' alt=''></img>
               <input placeholder='search image here' style={{ border: 'none' , outline : 'none' , width : "100%" }} onChange={handleQuery} value={query} />
             </div>
           </div>
