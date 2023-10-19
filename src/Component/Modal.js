@@ -24,7 +24,7 @@ function Modal({data , setModal , modal}) {
             <div className='flex'>
                 <img src={require('./Assets/Images/like.png')} className='like'></img><span>{data.likes}</span>
             </div>
-            <a href={`${data.user.portfolio_url}`} className='bg-slate-800 px-3 py-2  m-5 rounded-xl text-white'>Portfolio</a>
+            {data.user.portfolio_url ? <a href={`${data.user.portfolio_url}`} className='bg-slate-800 px-3 py-2  m-5 rounded-xl text-white'>Portfolio</a> : <h1 className='bg-slate-800 px-3 py-2  m-10 rounded-xl text-white w-full '>No Portfolio</h1> }
             </div>
           </div>
         </div>
