@@ -1,77 +1,48 @@
-import React, { useState } from 'react';
-import './Assets/Stylesheet/card.css';
-import { motion, AnimatePresence } from 'framer-motion';
+import React , {useState} from 'react';
+import './Assets/Stylesheet/card.css'
+import {  motion } from 'framer-motion';
+import Modal from './Modal';
 
-function ImageCard({ data, mode }) {
-  const [Modal, setModal] = useState(false);
-  const openModal = () => {
-    setModal(!Modal);
-  };
-
+function ImageCard({ data }) {
+  const [modal , setModal] = useState(false);
+  const handleModal = ()=>{
+    setModal(!modal)
+  }
   return (
-    <>
-      
-      <motion.div className='border-4 border-black card' onClick={openModal} initial={{ scale: 0.95 }} whileHover={{ scale: 1.05, rotate: '-2deg' }} transition={{ duration: 0.5, type: 'spring', damping: 6 }} >
-        <img src={data.urls.thumb} alt='Thumbnail' className='full-img' />
-        <div className='flex justify-between items-center'>
-          <div className='flex gap-5 items-center'>
-            <img src={data.user.profile_image.small} className='rounded-full profile'></img>
-            <div className='pl-2'>
-              <h1>{data.user.name}</h1>
-              <i>@{data.user.username}</i>
-            </div>  
-          </div>
-          
-          <div className='flex likes gap-2'>
-            <h1 className='text-xl'>&#128077;</h1>
-            <h1 className='text-xl'>{data.likes}</h1>
-          </div>
-        
-        </div>
-        
-      </motion.div>
-
-      <AnimatePresence>
-  {Modal && (
-    <motion.div
-      className='modal'
-      onClick={openModal}
-      exit={{ rotate: '360deg', scale: 0 }}
-    >
-      <div className='modal-content flex gap-10'>
-        <img
-          src={data.urls.regular}
-          alt='Image'
-          className=' h-64 md:w-64 object-cover full-img'
+    <div>
+    <motion.div className="p-4 rounded-lg shadow-lg card rounded-xl m-5"
+      initial = {{scale : 0.95}}
+      onClick={handleModal}
+      whileHover = {{rotate : "-2deg" , scale : 1}}
+      transition={{
+        duration : 1,
+        type : "spring",
+        damping : "2"
+      }}
+      >
+      <img
+        src={data.urls.thumb}
+        alt={data.description || 'Image'}
+        className="w-full h-auto rounded-lg"
         />
-        <div className='info md:w-44'>
-          <div className='user-info'>
-            <div className='flex gap-5'>
-              <img src={data.user.profile_image.small} alt='User Avatar' className='w-10 h-10 rounded-full' />
-              <h1 className='username text-lg'>{data.user.username}</h1>
-            </div>
-            <h1 className='name text-lg'>
-              {data.user.name} {data.user.lastname}
-            </h1>
+      <div className="mt-2 flex justify-between items-center">
+        <div className='flex'>
+          <img src={data.user.profile_image.small} className='rounded-full m-2'></img>
+          <div className='text-sm'>
+            <h1 className="text-lg font-semibold">{data.user.name}</h1>
+            <p className="text-gray-500">@{data.user.username}</p>
           </div>
-          <p className='description '>{data.description}</p>
-          <p className='created-at'>Created: {data.created_at}</p>
-          <a href={data.links.download} className='download mt-4'>
-            <i className='fas fa-download mr-1'></i> Download
-          </a>
-          <a
-            className='px-3 py-2 bg-slate-500 text-white mt-2'
-            href={`${data.user.portfolio_url}`}
-          >
-            Portfolio
-          </a>
+        </div>
+        <div className='flex items-center w-5'>
+          <img src={require('./Assets/Images/like.png')} className='like'></img>
+          <h1>{data.likes}</h1>
         </div>
       </div>
     </motion.div>
-  )}
-</AnimatePresence>
-
-    </>
+    {modal && <div className='modal'>
+      <Modal data = {data} setModal = {setModal} modal={modal}></Modal>
+    </div>}
+      </div>
   );
 }
 

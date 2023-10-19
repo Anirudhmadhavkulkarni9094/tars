@@ -51,9 +51,9 @@ function HomePage({ query, mode }) {
       ) : data.length === 0 ? (
         <h1 className='text-center'>No image found with name "{query.toUpperCase()}"</h1>
       ) : (
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 items-center content-center gap-10'>
+        <div className='items-center m-auto flex flex-wrap gap-10 relative justify-center'>
           {data.map(item=>{
-            return <ImageCard data = {item} mode={mode}></ImageCard>
+            return <ImageCard data={item}></ImageCard>
           })}
         </div>
       )}
