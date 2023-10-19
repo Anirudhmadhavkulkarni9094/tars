@@ -12,10 +12,10 @@ function ImageCard({ data, mode }) {
     <>
       
       <motion.div className='border-4 border-black card' onClick={openModal} initial={{ scale: 0.95 }} whileHover={{ scale: 1.05, rotate: '-2deg' }} transition={{ duration: 0.5, type: 'spring', damping: 6 }} >
-        <img src={data.urls.thumb} alt='Thumbnail' className='w-full' />
+        <img src={data.urls.thumb} alt='Thumbnail' className='full-img' />
         <div className='flex justify-between items-center'>
           <div className='flex gap-5 items-center'>
-            <img src={data.user.profile_image.small} className='rounded-full profile' alt='profile'></img>
+            <img src={data.user.profile_image.small} className='rounded-full profile'></img>
             <div className='pl-2'>
               <h1>{data.user.name}</h1>
               <i>@{data.user.username}</i>
@@ -41,13 +41,13 @@ function ImageCard({ data, mode }) {
       <div className='modal-content flex gap-10'>
         <img
           src={data.urls.regular}
-          alt='fullsize'
-          className='w-full h-64 md:w-64 object-cover full-img'
+          alt='Image'
+          className=' h-64 md:w-64 object-cover full-img'
         />
-        <div className='info flex flex-col md:w-44'>
+        <div className='info md:w-44'>
           <div className='user-info'>
             <div className='flex gap-5'>
-              <img src={data.user.profile_image.small} alt='UserAvatar' className='w-10 h-10 rounded-full' />
+              <img src={data.user.profile_image.small} alt='User Avatar' className='w-10 h-10 rounded-full' />
               <h1 className='username text-lg'>{data.user.username}</h1>
             </div>
             <h1 className='name text-lg'>
