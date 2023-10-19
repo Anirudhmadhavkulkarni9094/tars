@@ -21,8 +21,8 @@ function HomePage({ query, mode }) {
       setData([]);
       setLoading(true);
 
-      // Delay before making the API request
-      const delay = 500; // Adjust the delay as needed (in milliseconds)
+      
+      const delay = 2000; 
 
       const timer = setTimeout(() => {
         axios
@@ -38,7 +38,6 @@ function HomePage({ query, mode }) {
       }, delay);
 
       return () => {
-        // Clear the timer if the query changes before the delay
         clearTimeout(timer);
       };
     }
@@ -47,13 +46,13 @@ function HomePage({ query, mode }) {
   return (
     <div className={`m-auto p-5 ${mode ? 'bg-slate-900 text-white' : 'bg-white text-black'}`}>
       {loading ? (
-        <img className="loading fixed" src={require('./Assets/Images/loading.gif')} alt="Loading" />
+        <img className="loading fixed -z-10" src={require('./Assets/Images/loading.gif')} alt="Loading" />
       ) : data.length === 0 ? (
         <h1 className='text-center'>No image found with name "{query.toUpperCase()}"</h1>
       ) : (
         <div className='items-center m-auto flex flex-wrap gap-10 relative justify-center'>
           {data.map(item=>{
-            return <ImageCard data={item}></ImageCard>
+            return <ImageCard data={item} mode = {mode}></ImageCard>
           })}
         </div>
       )}

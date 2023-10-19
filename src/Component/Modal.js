@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Modal({data , setModal , modal}) {
+function Modal({data , setModal , modal , mode}) {
   return (
-    <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" onClick={()=>setModal(!modal)}>
+    <div class="relative z-10 text-black"  aria-labelledby="modal-title" role="dialog" aria-modal="true" onClick={()=>setModal(!modal)}>
   <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
   <div class="fixed inset-0 z-10 w-full overflow-y-auto">
@@ -17,14 +17,18 @@ function Modal({data , setModal , modal}) {
               </div>
             </div>
             <div className='flex flex-col justify-center items-center'>
-            <div className='m-5 flex'>
-                <img src={data.user.profile_image.small} className='rounded-full mr-1'></img>
-                {data.user.username}
+            <div className=' p-5 flex text-black'>
+                <img src={data.user.profile_image.small} className='rounded-full m-4 '></img>
+                <div>
+                <h1>{data.user.name}</h1>
+                <h1>@{data.user.username}</h1>
+                </div>
             </div>
             <div className='flex'>
-                <img src={require('./Assets/Images/like.png')} className='like'></img><span>{data.likes}</span>
+                <img  src={!mode ? require('./Assets/Images/like.png') : require('./Assets/Images/like-dark.png')} className='like'></img><span>{data.likes}</span>
             </div>
-            {data.user.portfolio_url ? <a href={`${data.user.portfolio_url}`} className='bg-slate-800 px-3 py-2  m-5 rounded-xl text-white'>Portfolio</a> : <h1 className='bg-slate-800 px-3 py-2  m-10 rounded-xl text-white w-full '>No Portfolio</h1> }
+            {data.user.portfolio_url ? <a href={`${data.user.portfolio_url}`} className='bg-slate-800 px-3 py-2 my-2 rounded-xl text-white '>Portfolio</a> : <h1 className='bg-slate-800 px-3 py-2  rounded-xl text-white w-fit '>No Portfolio</h1> }
+            <a href={data.links.download} className='bg-slate-800 px-3 py-2  rounded-xl text-white '>Download</a>
             </div>
           </div>
         </div>

@@ -8,25 +8,20 @@ function NavBar({ handleQuery, query, handleMode, mode }) {
           <h1 className='logo text-sm lg:text-3xl sm:text-sm'>Image Gallery</h1>
           <div className="flex gap-10 items-center hidden md:flex">
             {/* Search bar for medium and larger screens */}
-            <input
-              placeholder=" &#x1F50E; Search image here"
-              className="border-2 border-gray-300 text-black w-64 px-2 py-2 rounded-xl"
-              onChange={(e) => handleQuery(e)}
-              value={query}
-            ></input>
+            <div className='flex bg-white pr-5 pl-2 py-2 rounded-xl'>
+              <img src={require('./Assets/Images/search.png')} className='border-none w-6 mx-2'></img>
+              <input placeholder='search image here' style={{ border: 'none' , outline : 'none' }} onChange={handleQuery} value={query} />
+            </div>
             <h1>Explore</h1>
             <h1>Collections</h1>
             <h1>Community</h1>
           </div>
           {/* Search bar for small screens */}
           <div className='md:hidden lg:hidden'>
-            <input
-              placeholder=" &#x1F50E; Search image here"
-              className="border-2 border-gray-300 text-black w-22 sm:w-64 px-1 py-0 m-2 lg:px-2 lg:py-2 rounded-xl"
-
-              onChange={(e) => handleQuery(e)}
-              value={query}
-            ></input>
+          <div className='flex bg-white pr-5 pl-2 py-2 rounded-xl'>
+              <img src={require('./Assets/Images/search.png')} className='border-none w-6 mx-2'></img>
+              <input placeholder='search image here' style={{ border: 'none' , outline : 'none' , width : "100%" }} onChange={handleQuery} value={query} />
+            </div>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
             <input type="checkbox" value="" className="sr-only peer" onClick={handleMode} />
